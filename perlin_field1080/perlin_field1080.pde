@@ -40,8 +40,13 @@ void draw(){
   for(int y = 0; y < fil-1; y++){
     beginShape(TRIANGLE_STRIP);
     for(int x = 0; x < col; x++){ //<>//
+      //control color
       float sat = map(mouseY,0,height,0,255);
-      fill(map(terreno[x][y],-100,100,0,225),255,sat);
+        //color (solo va hasta 225 porque el rosa (250) es feo
+        fill(map(terreno[x][y],-100,100,0,225),255,sat);
+        //greyscale, comentar fuera color
+        //fill(map(terreno[x][y],-100,100,0,250));
+      //vertices centrados
       vertex(x*sc+660,y*sc+240,terreno[x][y]);
       vertex(x*sc+660,(y+1)*sc+240,terreno[x][y+1]);
     }
