@@ -12,6 +12,7 @@ float vel = 0;
 void setup() {
  size(1920,1080,P3D);
  colorMode(HSB);
+ frameRate(60);
 }
 
 void draw(){
@@ -19,12 +20,19 @@ void draw(){
   //ajustes previos
   background(25);
   stroke(150);
-  //noStroke();
-  //noFill();
+  
+  //texto instrucciones y framerate
+  textSize(10);
+  fill(255);
+  text("x_axis mouse: speed",20,20,0);
+  text("y_axis mouse: hue",20,30,0);
+  text(frameRate,19,50,0);
+  
+  //rotación
   translate(width/2,height/2);
   rotateX(PI/3);
   translate(-width/2,-height/2);
-  
+ 
   //generar ruido
   float yn  = vel;
   for(int y = 0; y < fil; y++){
