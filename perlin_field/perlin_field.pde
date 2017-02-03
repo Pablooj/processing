@@ -10,18 +10,21 @@ float[][] terreno = new float[col][fil];
 float vel = 0;
 
 void setup() {
-  size(600,600,P3D);
- 
+ size(600,600,P3D);
+ colorMode(HSB);
 }
 
 void draw(){
+  
   //ajustes previos
   background(0);
-  stroke(255);
-  noFill();
+  stroke(150);
+  //noStroke();
+  //noFill();
   translate(width/2,height/2);
   rotateX(PI/3);
   translate(-width/2,-height/2+50);
+  
   //generar ruido
   float yn  = vel;
   for(int y = 0; y < fil; y++){
@@ -37,6 +40,7 @@ void draw(){
   for(int y = 0; y < fil-1; y++){
     beginShape(TRIANGLE_STRIP);
     for(int x = 0; x < col; x++){ //<>//
+      fill(map(terreno[x][y],-100,100,0,300));
       vertex(x*sc,y*sc,terreno[x][y]);
       vertex(x*sc,(y+1)*sc,terreno[x][y+1]);
     }
