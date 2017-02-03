@@ -17,7 +17,7 @@ void setup() {
 void draw(){
   
   //ajustes previos
-  background(0);
+  background(25);
   stroke(150);
   //noStroke();
   //noFill();
