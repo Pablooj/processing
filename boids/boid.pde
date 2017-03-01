@@ -33,7 +33,7 @@ class boid {
   
   //opciones cosmeticas
   noStroke();
-  fill(255);
+  fill(0);
   
   //forma
   
@@ -64,8 +64,27 @@ class boid {
    PVector fuerza = PVector.sub(des,vel);
    fuerza.mult(0.001/es);
    fuerza.limit(maxf);
-   acc.add(fuerza);
-   
-   
+   acc.add(fuerza);  
+ }
+ void repel(boid[] boids){
+   float sep = 20;
+   int cont=0;
+   PVector sum = new PVector();
+   for(boid b: boids){
+     float dist = PVector.dist(loc, b.loc);
+     if( dist > 0 && dist < sep){
+       PVector dsep = PVector.sub(loc,b.loc);
+       dsep.normalize();
+       sum.add(dsep);
+       cont++;
+     }
+     if(cont > 0){
+      sum.div(cont);
+      sum.mult(maxv);
+      PVector fuerzarep = PVector.sub(sum,vel);
+      fuerzarep.limit(maxf*0.01);
+      acc.add(fuerzarep);
+     }
+   }    
  }
 }
