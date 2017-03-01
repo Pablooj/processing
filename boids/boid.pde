@@ -62,6 +62,7 @@ class boid {
      des.mult(maxv);
    }
    PVector fuerza = PVector.sub(des,vel);
+   fuerza.mult(0.001/es);
    fuerza.limit(maxf);
    acc.add(fuerza);
    
